@@ -1,0 +1,474 @@
+@import "./reset.css";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+  --container-width: 1270px; /*размер блока 1240px, +15px - слева + 15px - справа*/
+  --container-padding: 15px;
+  --secondary: rgba(15, 31, 28, 0.5);
+  --orange: #ff794e;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f6f6f6;
+  color: rgba(15, 31, 28, 1);
+}
+
+.none {
+  display: none !important;
+}
+
+.container {
+  max-width: var(--container-width);
+  padding: 0 var(--container-padding);
+  margin: 0 auto;
+}
+
+.container-left {
+  padding-left: calc((100% - var(--container-width)) / 2 + var(--container-padding));
+}
+
+/* ===================================== Header =====================================*/
+.header {
+  overflow: hidden;
+  position: relative;
+  min-height: 940px;
+  padding-top: 44px;
+  background: linear-gradient(132.05deg, #428e5f -17.38%, #112120 78.4%), #204434;
+  color: #fff;
+}
+.header:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 96px;
+  width: 100%;
+  background-image: url("../img/header/header-bottom.svg");
+  background-repeat: no-repeat;
+}
+.header a {
+  color: inherit;
+}
+
+.header__top {
+  margin-bottom: 86px;
+}
+
+.header__row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__content {
+  position: relative;
+  z-index: 5;
+  max-width: 592px;
+}
+
+/* -------------- Nav -------------- */
+.nav {
+  position: relative; /*т.к. картинка ofrhsdftn кнопки навигации*/
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 80px; /*чтобы на мобильной версии расстояние между блоками было не меньше 80px*/
+}
+
+/* Logo */
+.nav__logo {
+}
+.logo {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+}
+.logo a {
+  color: inherit !important;
+}
+
+/* List */
+.nav__list {
+  display: flex;
+  column-gap: 80px; /*чтобы рассояние между элементами было 80px*/
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+}
+
+.nav__list a {
+  position: relative;
+}
+.nav__list a.active:after,
+.nav__list a:hover:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 10px; /*Чтобы подчеркивание не было на всю ширину слова*/
+  bottom: -6px;
+  display: block;
+  height: 4px;
+  border-radius: 100px;
+  background: #c4c4c4;
+  /* width: 35px; усли убрать right: 10px */
+}
+
+/* Login */
+.nav__login {
+  display: flex;
+  column-gap: 25px; /*чтобы рассояние между элементами было 25px*/
+  align-items: center;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+}
+
+/* ===================================== Header ===================================== */
+
+/* header-content */
+.header__badge {
+  display: inline-block;
+  margin-bottom: 7px;
+  padding: 11px 30px;
+  border-radius: 15px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  background: rgba(255, 255, 255, 0.25);
+}
+.header__title {
+  margin-bottom: 30px;
+  font-weight: 400;
+  font-size: 55px;
+  line-height: 82px;
+}
+.header__text {
+  margin-bottom: 68px;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 38px;
+  opacity: 0.5;
+}
+
+/* header-image */
+
+/* header-image (мой) */
+.header__img {
+  position: relative;
+  width: 100px;
+}
+.header__img img {
+  position: absolute;
+  bottom: -185px;
+  right: -100px;
+  max-width: unset;
+  width: 894px;
+  height: 940px;
+
+  pointer-events: none;
+}
+
+/* ===================================== Destinations ===================================== */
+
+.destinations {
+  padding: 96px 0 100px 15px;
+  overflow-x: hidden; /*чтобы убрать скрол при уменьшении экрана*/
+}
+
+.destinations__row {
+  display: flex;
+  column-gap: 50px;
+}
+.destinations__content {
+  margin-top: 27px;
+  min-width: 456px;
+  /* width: 456px; */
+}
+.destinations-title {
+  font-weight: 600;
+  font-size: 55px;
+  line-height: 82px;
+}
+.destinations-title span {
+  display: block;
+  font-size: 30px;
+  line-height: 45px;
+}
+.destinations-text {
+  margin: 15px 0 60px 0;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 38px;
+  color: var(--secondary);
+}
+
+.destinations__slider {
+  flex-shrink: 0; /*чтобы блок не уменьшался при уменьшении экрана*/
+  width: 1110px;
+}
+.slider {
+  position: relative;
+  height: 456px;
+}
+
+.slider__item {
+  margin-top: 27px;
+  width: 335px;
+  height: 402px;
+  border-radius: 35px;
+  transition: 0.2s ease-in;
+  object-fit: cover;
+}
+.slider .center .slider__item {
+  margin-top: 0;
+  /* min-width: 380px; */
+  height: 456px;
+}
+
+.slider-btn {
+  width: 68px;
+  height: 68px;
+  background: linear-gradient(129.54deg, #ff7b4e 15.57%, #ff584e 95.03%);
+  border-radius: 50%;
+
+  /*флексы можно не указывать*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  transform: translateY(-50%);
+}
+
+.slider__btn--prev {
+  left: -27px;
+}
+.slider__btn--next {
+  right: -27px;
+}
+.slider__btn--prev:hover,
+.slider__btn--next:hover {
+  background: linear-gradient(129.54deg, #dddddd 30%, #aaaaaa 70%);
+}
+
+/* ===================================== Customers ===================================== */
+
+.customers {
+  padding: 100px 0px 133px;
+}
+.container {
+}
+.customers__row {
+  display: flex;
+  column-gap: 68px;
+}
+.customers__img {
+  max-width: 478px;
+}
+.customers__img img {
+  border-radius: 60px;
+}
+.customers__content {
+  max-width: 565px;
+}
+.customer__title {
+  font-weight: 500;
+  font-size: 45px;
+  line-height: 68px;
+  margin-bottom: 35px;
+}
+.review {
+  max-width: 491px;
+}
+.review__client {
+  display: flex;
+  column-gap: 33px;
+  align-items: center;
+  margin-bottom: 60px;
+}
+.review__client-avatar {
+  overflow: hidden;
+  width: 134px;
+  height: 134px;
+  border-radius: 50%;
+  background-color: #ff794e;
+}
+.review__client-desk {
+}
+.review__client-desk-name {
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-size: 33px;
+  line-height: 50px;
+}
+.review__client-desk-country {
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 38px;
+  color: var(--secondary);
+}
+.review__text {
+  margin-bottom: 30px;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 33px;
+  color: var(--secondary);
+}
+.review__rating {
+}
+
+/* ===================================== Cta ===================================== */
+
+.cta {
+  padding: 100px 0;
+}
+.cta__plate {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 580px;
+  padding: 40px 15px;
+
+  background: #ffffff;
+  border-radius: 60px;
+}
+.cta__plate:before,
+.cta__plate:after {
+  content: "";
+  position: absolute;
+  width: 63px;
+  height: 83px;
+}
+.cta__plate:before {
+  top: 74px;
+  right: 80px;
+  background-image: url(./../img/cta/cta-el-01.svg);
+}
+.cta__plate:after {
+  bottom: 56px;
+  left: 74px;
+  background-image: url(./../img/cta/cta-el-02.svg);
+}
+
+.cta__title {
+  margin-bottom: 30px;
+  font-weight: 500;
+  font-size: 45px;
+  line-height: 68px;
+}
+.cta__text {
+  margin-bottom: 60px;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 45px;
+  color: var(--secondary);
+}
+
+/* ===================================== Subscribe ===================================== */
+
+.subscribe {
+  padding: 35px 0 56px 0;
+}
+.subscribe__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.subscribe__title {
+  margin-bottom: 60px;
+  max-width: 494px;
+  font-weight: 600;
+  font-size: 55px;
+  line-height: 82px;
+}
+
+.subscribe-form {
+  width: 100%;
+  padding: 12px 15px 12px 46px;
+  display: flex;
+  justify-content: space-between;
+  column-gap: 20px;
+  background: linear-gradient(0deg, #ffffff, #ffffff), #c4c4c4;
+  border-radius: 35px;
+}
+.subscribe-form__input {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+}
+.subscribe-form__input::placeholder {
+  color: var(--secondary);
+}
+
+/* ===================================== Subscribe ===================================== */
+
+.footer {
+  padding: 56px 0 74px;
+}
+.footer a {
+  color: var(--secondary);
+}
+.logo--footer {
+  color: var(--orange);
+}
+.nav__list--footer a {
+}
+.nav__list.nav__list--footer a.active:after,
+.nav__list.nav__list--footer a:hover:after {
+  display: none;
+}
+.nav__list.nav__list--footer a.active {
+  color: var(--orange);
+}
+
+/* ===================================== Button ===================================== */
+
+.btn {
+  display: inline-block;
+  padding: 25px 45px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  background: linear-gradient(129.54deg, #ff7b4e 15.57%, #ff584e 95.03%);
+  border-radius: 27px;
+  color: #fefefe !important;
+}
+.btn:hover {
+  color: var(--secondary) !important;
+  background: linear-gradient(129.54deg, #dddddd 30%, #aaaaaa 70%);
+  transition: all 0.5s ease-in;
+}
+/*Эффект проседания кнопки*/
+.btn:active {
+  position: relative;
+  top: 2px;
+}
+
+.btn--login {
+  padding: 13px 44px;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+  border-radius: 100px;
+}
+
+.btn-header {
+  padding: 27px 48px;
+  font-size: 25px;
+  line-height: 38px;
+}
+
+.btn--subscribe-form {
+  padding: 34px 87px;
+  font-size: 25px;
+  line-height: 38px;
+  border-radius: 35px;
+}
