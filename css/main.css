@@ -124,6 +124,68 @@ body {
   line-height: 22px;
 }
 
+.nav__btn-toggle {
+  display: none;
+  background: none;
+}
+.menu-icon-wrapper {
+  --time: 0.2s;
+  --top: 9px;
+  --width: 40px;
+  --line-height: 4px;
+  --border-radius: calc(var(--line-height) / 2);
+  --color: #fff;
+  --color-active: #ff794e;
+
+  width: var(--width);
+  height: calc(var(--top) * 3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.menu-icon {
+  position: relative;
+  width: 100%;
+  height: var(--line-height);
+  border-radius: var(--border-radius);
+  background-color: var(--color);
+}
+.menu-icon:before,
+.menu-icon:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: var(--line-height);
+  border-radius: var(--border-radius);
+  background-color: var(--color);
+}
+.menu-icon:before {
+  top: calc(-1 * var(--top));
+  transition: transform var(--time) linear, top var(--time) ease-in var(--time);
+}
+.menu-icon:after {
+  top: calc(1 * var(--top));
+  transition: transform var(--time) linear, top var(--time) ease-in var(--time);
+}
+
+.js-menu-icon-active {
+  background-color: transparent;
+}
+.js-menu-icon-active:before {
+  top: 0px;
+  background-color: var(--color-active);
+  transform: rotate(45deg);
+  transition: top var(--time) linear, transform var(--time) ease-in var(--time);
+}
+.js-menu-icon-active:after {
+  top: 0px;
+  background-color: var(--color-active);
+  transform: rotate(-45deg);
+  transition: top var(--time) linear, transform var(--time) ease-in var(--time);
+}
+
 /* ===================================== Header ===================================== */
 
 /* header-content */
@@ -156,7 +218,7 @@ body {
 /* header-image (мой) */
 .header__img {
   position: relative;
-  width: 100px;
+  /* width: 100%; */
 }
 .header__img img {
   position: absolute;
@@ -169,10 +231,22 @@ body {
   pointer-events: none;
 }
 
+.header__img:after {
+  content: "";
+  position: absolute;
+  top: -15px;
+  right: -50px;
+  z-index: 10;
+  width: 830px;
+  height: 622px;
+  background-image: url(./../img/header/header-elements.svg);
+  pointer-events: none;
+}
+
 /* ===================================== Destinations ===================================== */
 
 .destinations {
-  padding: 96px 0 100px 15px;
+  padding: 96px 0 100px 0px;
   overflow-x: hidden; /*чтобы убрать скрол при уменьшении экрана*/
 }
 
@@ -471,4 +545,86 @@ body {
   font-size: 25px;
   line-height: 38px;
   border-radius: 35px;
+}
+
+/* ===================================== Media ===================================== */
+@media (max-width: 1269px) {
+  .container-left {
+    padding-left: var(--container-padding);
+  }
+}
+
+@media (max-width: 1139px) {
+  .nav__list {
+    column-gap: 60px; /*чтобы рассояние между элементами было 80px*/
+  }
+  .header__img img {
+    right: -175px;
+  }
+  .header__img:after {
+    right: -155px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .nav__list {
+    column-gap: 40px; /*чтобы рассояние между элементами было 80px*/
+  }
+  .header__img img {
+    right: -250px;
+  }
+  .header__img:after {
+    right: -250px;
+  }
+}
+
+@media (max-width: 920px) {
+  .nav__login,
+  .nav__list {
+    display: none !important;
+  }
+  .nav__btn-toggle {
+    display: block !important;
+  }
+  .nav--mobile {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0;
+
+    background: linear-gradient(200deg, #428e5f -17.38%, #112120 78.4%), #204434;
+  }
+
+  .nav--mobile .logo {
+    font-size: 34px;
+  }
+  .nav--mobile .nav__list {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 40px;
+    font-size: 22px;
+  }
+  .nav--mobile .nav__login {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 40px;
+    font-size: 22px;
+  }
+  .nav--mobile .nav__btn-toggle {
+    position: fixed;
+    top: 40px;
+    right: 15px;
+  }
+  .nav--mobile .nav__list a.active::after,
+  .nav--mobile .nav__list a:hover::after {
+    display: none;
+  }
 }

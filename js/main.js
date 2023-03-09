@@ -1,3 +1,4 @@
+// ================= Carousel =================
 $(document).ready(function () {
   $(".owl-carousel").owlCarousel();
 });
@@ -19,3 +20,23 @@ $(".slider__btn--prev").click(function () {
 $(".slider__btn--next").click(function () {
   owl.trigger("next.owl.carousel");
 });
+
+// ================= menu btn =================
+// вариант 1:
+const menuBtn = document.querySelector(".nav__btn-toggle");
+const menuIcon = document.querySelector(".menu-icon");
+
+menuBtn.addEventListener("click", () => {
+  menuIcon.classList.toggle("js-menu-icon-active");
+});
+
+// вариант 2:
+// const menuBtn = document.querySelector(".nav__btn-toggle");
+// menuBtn.addEventListener("click", () => {
+//   document.querySelector(".menu-icon").classList.toggle("js-menu-icon-active");
+// });
+
+// вариант 3:
+// document.querySelector(".nav__btn-toggle").onclick = () => {
+//   document.querySelector(".menu-icon").classList.toggle("js-menu-icon-active");
+// };
