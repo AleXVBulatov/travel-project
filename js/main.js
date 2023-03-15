@@ -12,21 +12,23 @@ owl.owlCarousel({
   startPosition: 1, // чтобы слайдер начинался с первой позиции (2-ая картинка)
   // autoWidth: true, // чтобы размеры картинок были как указаны у меня
   responsive: {
-    // breakpoint from 850 up
+    // breakpoint from 425 up
     425: {
       items: 2, // показывать 3 слайда
     },
-
+    // breakpoint from 600 up
     600: {
       items: 3, // показывать 3 слайда
     },
     // breakpoint from 1024 up
     1024: {
       margin: 20,
+      items: 3, // показывать 3 слайда
     },
     // breakpoint from 1269 up
     1269: {
       margin: 30,
+      items: 3, // показывать 3 слайда
     },
   },
 });
